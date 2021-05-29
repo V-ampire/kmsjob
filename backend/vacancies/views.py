@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.utils import timezone
 
 from vacancies.models import Vacancy
-from vacancies.pagination import CurrentGetParamsMixin, RangePaginationMixin
+from vacancies.pagination import PaginationMixin
 from vacancies.forms import SearchForm, CurrentDateForm
 
 
@@ -19,7 +19,7 @@ def e_handler500(request):
 
 
 # Views
-class IndexView(RangePaginationMixin, CurrentGetParamsMixin, ListView):
+class IndexView(PaginationMixin, ListView):
     template_name = 'vacancies/vacancies.html'
     context_object_name = 'vacancies'
     paginate_by = 12
@@ -34,7 +34,7 @@ class VacancyDetailView(DetailView):
     context_object_name = 'vacancy'
 
 
-class ByDateView(RangePaginationMixin, CurrentGetParamsMixin, ListView):
+class ByDateView(PaginationMixin, ListView):
     template_name = 'vacancies/vacancies.html'
     context_object_name = 'vacancies'
     paginate_by = 12
@@ -54,7 +54,7 @@ class ByDateView(RangePaginationMixin, CurrentGetParamsMixin, ListView):
         return queryset
 
 
-class SearchView(RangePaginationMixin, CurrentGetParamsMixin, ListView):
+class SearchView(PaginationMixin, ListView):
     template_name = 'vacancies/search.html'
     context_object_name = 'vacancies'
     paginate_by = 12

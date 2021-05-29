@@ -2,7 +2,7 @@
     <!-- Показывам кнопку со ссылкой, если есть предыдущая страница -->
     {% if page_obj.has_previous %}
         <li class="page-item">
-            <a class="page-link bg-warning" href="?page={{ page_obj.previous_page_number }}{{ current_get_params }}" aria-label="Previous">
+            <a class="page-link bg-warning" href="?page={{ page_obj.previous_page_number }}{{ get_params }}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
@@ -26,7 +26,7 @@
             </li>
         {% else %}
             <li class="page-item">
-                <a class="page-link bg-warning" href="?page={{ page }}{{ current_get_params }}">{{ page }}</a>
+                <a class="page-link bg-warning" href="?page={{ page }}{{ get_params }}">{{ page }}</a>
             </li>
     
         {% endif %}
@@ -42,7 +42,7 @@
 
     <!-- Показывам кнопку со ссылкой, если есть cледующая страница -->
     {% if page_obj.has_next %}
-        <li class="page-item"><a class="page-link bg-warning" href="?page={{ page_obj.next_page_number }}{{ current_get_params }}">&raquo;</a></li>
+        <li class="page-item"><a class="page-link bg-warning" href="?page={{ page_obj.next_page_number }}{{ get_params }}">&raquo;</a></li>
     {% else %}
         <li class="page-item disabled"><a class="page-link" tabindex="-1">&raquo;</a></li>
     {% endif %}
