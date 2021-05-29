@@ -1,0 +1,155 @@
+/* @font-face {
+    font-family: Museo;
+    src: url(../fonts/Museo_100.otf);
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    /* font-family: Museo, Arial, Helvetica, sans-serif; */
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+a {
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(39, 38, 38);
+}
+
+.page-link {
+    color:black;
+}
+
+.page-link:hover {
+    color:black;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.header {
+    background-color: #FFC107;
+}
+
+.footer {
+    color: black;
+    background-color: #FFC107;
+}
+
+.navbar {
+    color: black;
+    background-color: #FFC107;
+    max-width: 1200px;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-brand-logo {
+    height: 3rem;
+    width: auto;
+}
+
+.navbar-search-text {
+    display: none;
+}
+ 
+.content {
+    max-width: 1200px;
+}
+
+.yellow {
+    background-color: #FFC107;
+}
+
+.badge-kmsjob {
+    background-color: #FFC107;
+    color: black;
+}
+
+.badge-farpost {
+    background-color: #F66303;
+    color: white;
+}
+
+.badge-hh {
+    background-color: #D6001C;
+    color: white;
+}
+
+.badge-avito {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.badge-vk {
+    background-color: #4A76A8;
+    color: white;
+}
+
+.badge-superjob {
+    background-color: #00AA87;
+    color: white;
+}
+
+.developer-name {
+    font-family: 'Neucha', cursive;
+}
+
+.emoji {
+    height: 1em;
+    width: auto;
+    vertical-align: text-top;
+}
+
+.text-underline {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.error-description-code {
+    font-size: 5rem;
+}
+
+@media (min-width: 768px) {
+    html,
+    body {
+        height: 100%;
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+    }
+
+    .register-container {
+        width: 50%;
+        height: 65vh;
+    }
+
+    .login-container {
+        width: 50%;
+    }
+
+    .navbar-dash {
+        font-size: 1.5rem;
+    }
+}

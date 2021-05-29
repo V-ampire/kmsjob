@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Вакансия {{ vacancy.name }}, {{ vacancy.employer }}
+{% endblock title %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/kmsjob_vacancy.css' %}">
+{% endblock css %}
+
+
+{% block content %}
+    <div class="vacancy-detail mx-sm-3">
+        <div class="container-fluid px-4">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1 class="vacancy-detail-name d-block mb-2">{{ vacancy.name }}</h1>
+                    <div class="vacancy-detail-employer mb-2">
+                        {{ vacancy.employer }}
+                    </div>
+                    <div class="vacancy-detail-description mb-4">
+                        {{ vacancy.description|safe }}
+                    </div>
+                    <div class="vacancy-detail-contacts">
+                        <h5>Контактная инормация:</h5>
+                        <p>{{ vacancy.contacts }}</p>
+                    </div>            
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    
+

@@ -1,0 +1,46 @@
+<div class="search">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="search-bar">
+                    <div class="search-close my-3 text-left">
+                        <a class="search-toggler"><i class="far fa-times-circle fa-2x"></i></a>
+                    </div>
+                    <form method="GET" action="{% url 'vacancies:search' %}">
+                        <div class="row mb-2">
+                            <div class="col">
+                                <input name="search_query" type="text" class="form-control" id="serachInput" placeholder="Поиск по должности, например: инженер">
+                            </div>    
+                        </div>
+                        <p class="mb-1">
+                            Поиск по дате:
+                        </p>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="input-group date" id="datetimepicker-from" data-target-input="nearest">
+                                    <input name="date_from" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker-from"/>
+                                    <div class="input-group-append" data-target="#datetimepicker-from" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                    </div>
+                                </div>    
+                            </div>
+                            <div class="col">
+                                <div class="input-group date" id="datetimepicker-to" data-target-input="nearest">
+                                    <input name="date_to" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker-to"/>
+                                    <div class="input-group-append" data-target="#datetimepicker-to" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-warning btn-block">Искать</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

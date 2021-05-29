@@ -1,0 +1,49 @@
+<ul class="pagination justify-content-center pagination-sm">
+    <!-- Показывам кнопку со ссылкой, если есть предыдущая страница -->
+    {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link bg-warning" href="?page={{ page_obj.previous_page_number }}{{ current_get_params }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+    {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1">&laquo;</a>
+        </li>
+    {% endif %}
+
+    <!-- Показывам троеточие, если до начала больше 2 страниц -->
+    {% if page_obj.number|add:'-3' > 0 %}
+        <li class="page-item disabled">
+            <a class="page-link bg-warning"><span class="ellipsis">...</span></a>
+        </li>
+    {% endif %}
+    
+    {% for page in pag_range %}
+        {% if page == page_obj.number %}
+            <li class="page-item">
+                <a class="page-link active">{{ page }} <span class="sr-only">(current)</span></a>
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link bg-warning" href="?page={{ page }}{{ current_get_params }}">{{ page }}</a>
+            </li>
+    
+        {% endif %}
+    {% endfor %}
+
+
+    <!-- Показывам троеточие, если до конца больше 2 страниц -->
+    {% if page_obj.number|add:'3' < paginator.num_pages %}
+        <li class="page-item disabled">
+            <a class="page-link bg-warning"><span class="ellipsis">...</span></a>
+        </li>
+    {% endif %}
+
+    <!-- Показывам кнопку со ссылкой, если есть cледующая страница -->
+    {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link bg-warning" href="?page={{ page_obj.next_page_number }}{{ current_get_params }}">&raquo;</a></li>
+    {% else %}
+        <li class="page-item disabled"><a class="page-link" tabindex="-1">&raquo;</a></li>
+    {% endif %}
+</ul>

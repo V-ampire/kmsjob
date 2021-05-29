@@ -1,0 +1,150 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" type="text/css" media="all" rel="stylesheet">
+    {% block css %}
+    {% endblock css %}
+    <link rel="stylesheet" href="{% static '/css/kmsjob_base.css' %}">
+    <link rel="stylesheet" href="{% static '/css/toolbars.css' %}">
+
+</head>
+<body>
+
+    <div class="search-container">
+        {% include 'vacancies/search_bar.html' %}
+    </div>
+
+    <!-- Messages modal -->
+    <div class="modal messages-modal fade" id="messagesModalCenter" tabindex="-1" role="dialog" aria-labelledby="messagesModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    {% block hidebars %}
+    {% endblock hidebars %}
+
+    <div class="wrapper">
+
+        <div class="main">
+            <header id="header" class="header mb-2">
+                <nav class="navbar justify-content-between m-auto">
+                    <a class="navbar-brand" href="{% url 'vacancies:index' %}"><img class="navbar-brand-logo" src="{% static 'img/kmsjob_logo.png' %}" alt="kmsjob"></a>
+                    <div class="navbar-dash d-flex">
+                        <a class="navbar-search search-toggler mr-2 mr-md-4">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="content m-auto">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>    
+
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 mb-2">
+                        <div class="add-vacancy">
+                            <div class="dropdown">
+                                <button class="btn btn-dark btn-block dropdown-toggle" type="button" id="dropdownVacancyButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Добавить вакансию
+                                </button>
+                                <div class="dropdown-menu w-100" aria-labelledby="dropdownVacancyButton">
+                                    <form method="post" class="px-4 py-3 add-vacancy-form" action="{% url 'feedback:kmsjob_add_vacancy' %}">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <input name="employer" type="text" class="form-control" id="employerInput" placeholder="Ваша организация">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="contacts" type="text" class="form-control" id="contactsInput" placeholder="Контактные данные">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="name" type="text" class="form-control" id="nameInput" placeholder="Название вакансии">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea name="description" class="form-control" id="descriptionInput" rows="4" placeholder="Описание вакансии"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-warning btn-block">Добавить</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 mb-2">
+                        <div class="feedback">
+                            <div class="dropdown">
+                                <button class="btn btn-dark btn-block dropdown-toggle" type="button" id="dropdownFeedbackButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Обратная связь
+                                </button>
+                                <div class="dropdown-menu w-100" aria-labelledby="dropdownFeedbackButton">
+                                    <form method="post" class="px-4 py-3 feedback-form" action="{% url 'feedback:kmsjob_feedback' %}">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <input name="name" type="text" class="form-control" id="feedbackNameInput" placeholder="Ваше имя">
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="contacts" type="text" class="form-control" id="feedbackContactsInput" placeholder="Контакты">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea name="body" class="form-control" id="feedbackMessageTextarea" rows="4" placeholder="Ваше сообщение"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-warning btn-block">Отправить</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-2 mx-auto">
+                        <div class="developer text-center">
+                            Разработчик сайта: <strong><a class="developer-name" href="https://vk.com/id152010495">V-ampire <img class="emoji" src="{% static 'img/vamp.png' %}"></a></strong>, 2019г.
+                        </div>
+                    </div>
+                    <!-- <div class="col-6 mb-1 mx-auto text-center">2019</div> -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+    {% block scripts %}
+    {% endblock scripts %}
+    <script>
+        let messages = [];
+        {% if messages %}
+            {% for message in messages %}
+                messages.push({msg:'{{ message }}',tags:'{{ message.tags }}'});                
+            {% endfor %}
+        {% endif %}
+    </script>
+    <script src="{% static 'js/msg_ctrl.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

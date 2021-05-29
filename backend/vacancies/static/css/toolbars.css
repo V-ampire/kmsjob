@@ -1,0 +1,96 @@
+.search-container {
+    position: fixed;
+    left: -120%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.3s ease;
+    z-index: 99;
+    background-color: rgb(255, 255, 255, 0.5);
+    height: 100vh;
+    width: 100%;
+}
+
+.search {
+    max-width: 768px;
+    background-color: #fff;
+    height: 100%;
+    box-shadow: 0 0 10px;
+}
+
+.search-active {
+    left: 0;
+}
+
+.register-container {
+    position: fixed;
+    top: -120%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.3s ease;
+    z-index: 99;
+    background-color: rgb(255, 255, 255, 0.5);
+    height: 60vh;
+    width: 100%;
+}
+
+.register {
+    background-color: #fff;
+    height: 100%;
+    box-shadow: 0 0 10px;
+}
+
+.register-active {
+    top: 0;
+}
+
+.login {
+    background-color: #fff;
+    height: 100%;
+    box-shadow: 0 0 10px;
+}
+
+.login-container {
+    position: fixed;
+    top: -120%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.3s ease;
+    z-index: 99;
+    background-color: rgb(255, 255, 255, 0.5);
+    height: 50vh;
+    width: 100%;
+}
+
+.login-active {
+    top: 0;
+}
+
+.logout {
+    background-color: #fff;
+    height: 100%;
+    box-shadow: 0 0 10px;
+}
+
+.logout-container {
+    position: fixed;
+    top: -120%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.3s ease;
+    z-index: 99;
+    background-color: rgb(255, 255, 255, 0.5);
+    height: 30vh;
+    width: 100%;
+}
+
+.logout-active {
+    top: 0;
+}

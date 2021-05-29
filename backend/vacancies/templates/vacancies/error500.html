@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Страница не найдена - 404
+{% endblock title %}
+
+
+{% block content %}
+<div class="mx-sm-3">
+    <div class="container-fluid p-1">
+        <div class="error-description text-center">
+            <h1 class="error-description-code">500</h1>
+            <p>Упс! Что-то пошло не так!</p>
+            <p>
+                Вернитесь на <a class="text-underline" href="{% url 'base:index' %}">Главную</a> или воспользуйтесь 
+                <span class="search-toggler text-underline">поиском</span> по вакансиям.
+            </p>
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}
+    

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Поиск вакансий
+{% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block hidebars %}
+{% endblock hidebars %}
+
+{% block content %}
+
+    <div class="vacancies mb-3 mx-sm-3">
+        <div class="container-fluid p-1">
+            <div class="row">
+                <div class="col-12">
+                    <div class="vacancies-search-data mb-3">
+                    {% if search_query %}
+                        <div class="mb-2 d-flex flex-column flex-sm-row">
+                            <div class="vacancies-search-data-query mr-2">
+                                Вакансии по запросу <strong>{{ search_query }}</strong>
+                            </div>
+                            <form class="form-inline" action="{% url 'base:search' %}" method="GET">
+                                <div class="form-group p-0 my-0 mr-2">
+                                    <input name="search_query" type="text" class="form-control py-0" id="serachInput" placeholder="Поиск по должности">
+                                </div>
+                                <button type="submit" class="btn btn-warning py-0 px-1"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                    {% endif %}
+                    {% if date_from %}
+                        <span class="mr-1">
+                            от <strong>{{ date_from }}</strong>
+                        </span>
+                    {% endif %}
+                    {% if date_to %}
+                        <span>
+                            до <strong>{{ date_to }}</strong>
+                        </span>
+                    {% endif %}
+    
+                    {% if not vacancies %}
+                        <div class="vacancies-search-incorrect">
+                            <p>
+                                Некорректный поисковой запрос, пожалуйста проверьте данные.
+                            </p>
+                            <p>
+                                Вы можете вернуться на <a class="text-underline" href="{% url 'base:index' %}">главную</a> 
+                                или <span class="search-toggler text-underline">продолжить поиск.</span>
+                            </p>
+                        </div>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-8">
+                    <ul class="list-group list-group-flush">
+                        <div id="ads-mobile-small"></div>
+                        <div id="ads-desctop-top"></div>
+                        {% for vacancy in vacancies %}
+
+                            {% if forloop.counter == 4 %}
+                                <div id="ads-mobile-big"></div>
+                                <div id="ads-desctop-feed"></div>
+                            {% endif %}
+
+                            <li class="list-group-item p-0 mb-3 vacancy">
+                                <div class="vacancy-source p-1">
+                                    <span class="badge badge-pill badge-{{ vacancy.source_name }}">{{ vacancy.source_name }}</span>
+                                </div>
+                                <a href="{{ vacancy.source }}" target="_blank">
+                                    <div class="vacancy-name p-1 d-flex justify-content-between">
+                                        <span class="mr-1">{{ vacancy.name }}</span>
+                                        <span class="mr-2"><i class="fas fa-chevron-circle-right text-dark"></i></span>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <div id="ads-desctop-side"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if is_paginated %}
+    <nav class="page-nav">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-8 m-auto">
+                    {% include 'base/pagination.html' %}
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% endif %}
+    
+{% endblock content %}
+    

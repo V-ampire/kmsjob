@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Вакансии в Комсомольске-на-Амуре
+{% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block hidebars %}
+{% endblock hidebars %}
+
+{% block content %}
+
+    <div class="vacancies mb-3 mx-sm-3">
+        <div class="container-fluid p-1">
+            <div class="row">
+                <div class="col-12">
+                    <div class="vacancies-date mb-3 d-flex flex-column flex-sm-row">
+                        <form class="mr-2 mb-1" method="GET" id="currentDateForm" action="{% url 'vacancies:by_date' %}">
+                            <div class="input-group date" id="datetimepicker-calendar" data-target-input="nearest">
+                                <span class="mr-2">
+                                    Вакансии на <strong class="current-date-text">{{ vacancies.0.modified|date:"d E Y" }} г.</strong>
+                                </span>
+                                <span class="input-group-append" data-target="#datetimepicker-calendar" data-toggle="datetimepicker">
+                                    <input name="current_date" type="hidden" data-target="#datetimepicker-calendar"/>
+                                    <span><i class="far fa-calendar-alt"></i></span>
+                                </span>
+                            </div>
+                        </form>
+                        <form class="form-inline" action="{% url 'vacancies:search' %}" method="GET">
+                            <div class="form-group p-0 my-0 mr-2">
+                                <input name="search_query" type="text" class="form-control py-0" id="serachInput" placeholder="Поиск по должности">
+                            </div>
+                            <button type="submit" class="btn btn-warning py-0 px-1"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row flex-column-reverse">
+                <div class="col-12">
+                    <ul class="list-group list-group-flush">
+
+                    {% for vacancy in vacancies %}
+                                              
+                        <li class="list-group-item px-0 pt-0 pb-2 vacancy">
+                            <div class="vacancy-source p-1">
+                                <span class="badge badge-pill badge-{{ vacancy.source_name }}">{{ vacancy.source_name }}</span>
+                            </div>
+                        {% if vacancy.source %}
+                            <a href="{{ vacancy.source }}" target="_blank">
+                        {% else %}
+                            <a href="{{ vacancy.get_absolute_url }}" target="_blank">
+                        {% endif %}
+                                <div class="vacancy-name p-1 d-flex justify-content-between">
+                                    <span class="mr-1">{{ vacancy.name }}</span>
+                                    <span class="mr-2"><i class="fas fa-chevron-circle-right text-dark"></i></span>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if is_paginated %}
+    <div class="page-nav">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-8 m-auto">
+                    {% include 'vacancies/pagination.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}
