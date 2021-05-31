@@ -18,6 +18,7 @@ pillow = "*"
 requests = "*"
 beautifulsoup4 = "*"
 django-environ = "*"
+pytelegramlogger = "*"
 
 [requires]
 python_version = "3.8"

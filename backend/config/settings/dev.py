@@ -20,9 +20,21 @@ LOGGING = {
         'console': {
             'class': 'logging.StreamHandler',
         },
+        'telegram': {
+            'class': 'telegram_logger.TelegramStreamHandler',
+            'chat_ids': [1],
+            'token': 'TOKEN',
+        }
     },
     'root': {
-        'handlers': ['console'],
+        'handlers': ['telegram'],
         'level': 'WARNING',
     },
+    'loggers': {
+        'telegram_logger': {
+            'handlers': ['telegram'],
+            'level': 'INFO',
+            'propagate': False,
+        }
+    }
 }

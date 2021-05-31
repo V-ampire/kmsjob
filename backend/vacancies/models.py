@@ -24,6 +24,7 @@ class Vacancy(TimeStampedModel):
 
 
     class Meta:
+        db_table = 'vacancy'
         ordering = ('source', '-modified')
 
     def __str__(self):

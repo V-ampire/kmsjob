@@ -1,13 +1,15 @@
 from django.views.generic.list import ListView
-from django.views.generic import FormView, DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import DetailView
 from django.shortcuts import render
-from django.utils import timezone
 
 from vacancies.models import Vacancy
 from vacancies.pagination import PaginationMixin
 from vacancies.forms import SearchForm, CurrentDateForm
+from vacancies import handlers
 
+
+import logging
+logger = logging.getLogger('telegram_logger')
 
 # Error handlers
 def e_handler404(request, exception):
@@ -41,18 +43,11 @@ class ByDateView(PaginationMixin, ListView):
 
     def get_queryset(self):
         form = CurrentDateForm(self.request.GET)
-        if form.is_valid():
-            current_date = form.cleaned_data['current_date']
-        else:
-            current_date = timezone.now()
-        queryset = Vacancy.objects.filter(
-            modified__year=current_date.year,
-            modified__month=current_date.month,
-            modified__day=current_date.day,
-            status=Vacancy.ACTIVE
-        )
-        return queryset
-
+        if not form.is_valid():
+            return Vacancy.get_todays_vacancies()
+        current_date = form.cleaned_data['current_date']
+        return handlers.get_vacancies_by_date(current_date)
+        
 
 class SearchView(PaginationMixin, ListView):
     template_name = 'vacancies/search.html'
@@ -61,19 +56,10 @@ class SearchView(PaginationMixin, ListView):
 
     def get_queryset(self):
         form = SearchForm(self.request.GET)
-        if form.is_valid():
-            date_from = form.cleaned_data['date_from']
-            date_to = form.cleaned_data['date_to']
-            search_query = form.cleaned_data['search_query']
-            vacancies = Vacancy.objects.filter(status=Vacancy.ACTIVE)
-            if date_from:
-                vacancies = vacancies.filter(modified__gte=date_from)
-            if date_to:
-                vacancies = vacancies.filter(modified__lte=date_to)
-            if search_query:
-                vacancies = vacancies.filter(name__search=search_query)
-            return vacancies
-        return []
+        if not form.is_valid():
+            return []
+        search_data = form.cleaned_data
+        return handlers.search_vacancies(**search_data)
 
     def get_context_data(self, *args, **kwargs):
         context = super(SearchView, self).get_context_data(*args, **kwargs)

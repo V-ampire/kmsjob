@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9a2863de151f45c3b4ab6fc40d0245a4099d3ab644a5dc99ab3abc487e0b24dd"
+            "sha256": "89694304d1b61b0e49a17ddedee1b8e498c6b6755a25e152df6744f6ad3bb390"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -34,10 +34,10 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c",
-                "sha256:719a74fb9e33b9bd44cc7f3a8d94bc35e4049deebe19ba7d8e108280cfd59830"
+                "sha256:2bbf76fd432960138b3ef6dda3dde0544f27cbf8546c458e60baf371917ba9ee",
+                "sha256:50b1e4f8446b06f41be7dd6338db18e0990601dce795c2b1686458aa7e8fa7d8"
             ],
-            "version": "==2020.12.5"
+            "version": "==2021.5.30"
         },
         "chardet": {
             "hashes": [
@@ -150,6 +150,14 @@
             "index": "pypi",
             "version": "==2.8.6"
         },
+        "pytelegramlogger": {
+            "hashes": [
+                "sha256:136502fde005698b31bfcf3d84d82ffff874ddc019843049ee900ffb99fd9b38",
+                "sha256:35cfbbb4ca684640a678b06594350993463ec18d6d253c3146b75853f20eeea6"
+            ],
+            "index": "pypi",
+            "version": "==1.0.0"
+        },
         "pytils": {
             "editable": true,
             "git": "https://github.com/emorozov/pytils.git",
@@ -210,10 +218,10 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c",
-                "sha256:719a74fb9e33b9bd44cc7f3a8d94bc35e4049deebe19ba7d8e108280cfd59830"
+                "sha256:2bbf76fd432960138b3ef6dda3dde0544f27cbf8546c458e60baf371917ba9ee",
+                "sha256:50b1e4f8446b06f41be7dd6338db18e0990601dce795c2b1686458aa7e8fa7d8"
             ],
-            "version": "==2020.12.5"
+            "version": "==2021.5.30"
         },
         "chardet": {
             "hashes": [

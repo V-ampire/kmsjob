@@ -8,6 +8,5 @@ class SearchForm(forms.Form):
 
 
 class CurrentDateForm(forms.Form):
-
     current_date = forms.DateField()
     

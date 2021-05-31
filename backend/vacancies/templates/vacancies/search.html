@@ -7,9 +7,6 @@
 {% block css %}
 {% endblock css %}
 
-{% block hidebars %}
-{% endblock hidebars %}
-
 {% block content %}
 
     <div class="vacancies mb-3 mx-sm-3">
@@ -22,7 +19,7 @@
                             <div class="vacancies-search-data-query mr-2">
                                 Вакансии по запросу <strong>{{ search_query }}</strong>
                             </div>
-                            <form class="form-inline" action="{% url 'base:search' %}" method="GET">
+                            <form class="form-inline" action="{% url 'vacancies:search' %}" method="GET">
                                 <div class="form-group p-0 my-0 mr-2">
                                     <input name="search_query" type="text" class="form-control py-0" id="serachInput" placeholder="Поиск по должности">
                                 </div>
@@ -47,7 +44,7 @@
                                 Некорректный поисковой запрос, пожалуйста проверьте данные.
                             </p>
                             <p>
-                                Вы можете вернуться на <a class="text-underline" href="{% url 'base:index' %}">главную</a> 
+                                Вы можете вернуться на <a class="text-underline" href="{% url 'vacancies:index' %}">главную</a> 
                                 или <span class="search-toggler text-underline">продолжить поиск.</span>
                             </p>
                         </div>
@@ -92,7 +89,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-8 m-auto">
-                    {% include 'base/pagination.html' %}
+                    {% include 'vacancies/pagination.html' %}
                 </div>
             </div>
         </div>
