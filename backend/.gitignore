@@ -15,7 +15,7 @@ __pycache__/*
 # Медиа и статик
 media/
 app/static/*
-*.sh
+# *.sh
 *.pem
 # node_modules
 node_modules/
