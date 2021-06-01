@@ -27,7 +27,7 @@ LOGGING = {
         }
     },
     'root': {
-        'handlers': ['telegram'],
+        'handlers': ['console'],
         'level': 'WARNING',
     },
     'loggers': {

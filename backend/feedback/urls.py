@@ -4,6 +4,6 @@ from . import views
 
 app_name = 'feedback'
 urlpatterns = [
-    path('kmsjob_feedback/', views.FeedbackKmsjobView.as_view(), name='kmsjob_feedback'),
-    path('kmsjob_add_vacancy/', views.AddVacancyKmsjobView.as_view(), name='kmsjob_add_vacancy'),
+    path('feedback', views.FeedbackKmsjobView.as_view(), name='feedback'),
+    path('add_vacancy', views.AddVacancyKmsjobView.as_view(), name='add_vacancy'),
 ]

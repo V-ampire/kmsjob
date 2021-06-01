@@ -62,7 +62,7 @@
 
         <div class="footer">
             <div class="container">
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-12 col-lg-6 mb-2">
                         <div class="add-vacancy">
                             <div class="dropdown">
@@ -70,7 +70,7 @@
                                     Добавить вакансию
                                 </button>
                                 <div class="dropdown-menu w-100" aria-labelledby="dropdownVacancyButton">
-                                    <form method="post" class="px-4 py-3 add-vacancy-form" action="{% url 'feedback:kmsjob_add_vacancy' %}">
+                                    <form method="post" class="px-4 py-3 add-vacancy-form" action="{% url 'feedback:add_vacancy' %}">
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <input name="employer" type="text" class="form-control" id="employerInput" placeholder="Ваша организация">
@@ -97,7 +97,7 @@
                                     Обратная связь
                                 </button>
                                 <div class="dropdown-menu w-100" aria-labelledby="dropdownFeedbackButton">
-                                    <form method="post" class="px-4 py-3 feedback-form" action="{% url 'feedback:kmsjob_feedback' %}">
+                                    <form method="post" class="px-4 py-3 feedback-form" action="{% url 'feedback:feedback' %}">
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <input name="name" type="text" class="form-control" id="feedbackNameInput" placeholder="Ваше имя">

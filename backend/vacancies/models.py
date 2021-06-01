@@ -26,6 +26,8 @@ class Vacancy(TimeStampedModel):
     class Meta:
         db_table = 'vacancy'
         ordering = ('source', '-modified')
+        verbose_name = 'Вакансия'
+        verbose_name_plural = 'Вакансии'
 
     def __str__(self):
         return '{} / {}: {}'.format(self.source_name, self.employer, self.name)

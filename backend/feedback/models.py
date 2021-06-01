@@ -10,6 +10,8 @@ class FeedbackMessage(TimeStampedModel):
 
     class Meta:
         ordering = ('-created',)
+        verbose_name = 'Обратная связь'
+        verbose_name_plural = 'Обратная связь'
 
     def __str__(self):
         return 'Сообщение от {}'.format(self.name)
@@ -20,10 +22,13 @@ class AddVacancyMessage(TimeStampedModel):
     name = models.CharField("Название вакансии", max_length=255)
     contacts = models.CharField("Контакты", max_length=125)
     description = models.TextField("Описание вакансии")
-    save_vacancy = models.BooleanField("Сохранить вакансию", default=False)
+    saved_vacancy = models.BooleanField("Вакансия сохранена", default=False)
 
     class Meta:
         ordering = ('-created',)
+        verbose_name = 'Сообщение о вакансии'
+        verbose_name_plural = 'Сообщения о вакансиях'
+        
 
     def __str__(self):
         return 'Сообщение от {}'.format(self.employer)
