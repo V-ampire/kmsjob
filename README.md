@@ -24,4 +24,4 @@ CHAT_IDS=
 
 - Клонировать репозиторий `git clone https://github.com/V-ampire/kmsjob.git`
 
-- Выполнить скрипт `isntall.sh`
+- Выполнить скрипт `scripts/isntall.sh`
