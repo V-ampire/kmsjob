@@ -19,7 +19,7 @@ LOGGING = {
         'level': 'WARNING',
     },
     'loggers': {
-        'telegram_logger': {
+        'telegram': {
             'handlers': ['telegram'],
             'level': 'INFO',
             'propagate': False,

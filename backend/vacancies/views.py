@@ -8,9 +8,6 @@ from vacancies.forms import SearchForm, CurrentDateForm
 from vacancies import handlers
 
 
-import logging
-logger = logging.getLogger('telegram_logger')
-
 # Error handlers
 def e_handler404(request, exception):
     return render(request, 'vacancies/error404.html', status=404)

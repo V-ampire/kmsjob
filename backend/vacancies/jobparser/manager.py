@@ -15,10 +15,6 @@ class ThreadedManager(object):
     """
 
     def __init__(self) -> None:
-        """
-        Инициализация.
-        Создаем списки парсеров и хендлеров.
-        """
         self._parsers = []
     
     def add_parser(self, parser: BaseVacancyParser) -> None:

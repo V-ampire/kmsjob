@@ -29,6 +29,7 @@ class BaseVacancyParser:
         response = requests.get(url)
         if response.status_code < 400:
             return response.text
+        return ''
 
     def get_vacancies(self):
         """
@@ -64,11 +65,10 @@ class BaseVacancyParser:
     def run(self):
         vacancy_data = self.get_vacancies()
         vacancies = self.parse_data(vacancy_data)
-        # Вывод в json
         if self.json_output:
-            self.save_vacancies_as_json(vacancies)
+            self.save_vacancies_as_json(vacancies) # Вывод в json
         else:
-            self.save_vacancies_in_db(vacancies)
+            self.save_vacancies_in_db(vacancies) # Сохранение в БД
 
 
 class HHParser(BaseVacancyParser):
@@ -104,7 +104,7 @@ class AvitoParser(BaseVacancyParser):
     name = 'avito'
 
     def get_vacancies(self):
-        return self.get_html(self.parse_url)
+        return self.get_html(self.parse_url) # FIXME get with pagination
 
     def parse_data(self, data):
         vacancies = []
@@ -123,7 +123,8 @@ class AvitoParser(BaseVacancyParser):
 
     def is_today_vacancy(self, item):
         """
-        Вернуть True если вакансия сегодняшняя, иначе False
+        Вернуть True если вакансия сегодняшняя, иначе False.
+        Вакансии на сегодня включают слово час или минут/минуты.
         """
         data_str = item.find('div', {'data-marker': 'item-date'}).get_text()
         return data_str.lower().find('час') >= 0 or data_str.lower().find('минут') >= 0
@@ -161,7 +162,7 @@ class FarpostParser(BaseVacancyParser):
 
     def is_today_vacancy(self, item):
         """
-        Определяет имеет ли вакансия сегодняшнюю дату.
+        Вернуть True если вакансия сегодняшняя, иначе False.
         Вакансии на сегодня либо не имеют даты либо включают слово сегодня.
         """
         date_div = item.find('div', class_='date')
@@ -229,7 +230,9 @@ class SuperjobParser(BaseVacancyParser):
         return vacancies
  
 
-parsers_list = {
+# Реестр классов парсеров
+
+parser_classes = {
     'avito': AvitoParser,
     'farpost': FarpostParser,
     'vk': VkParser,

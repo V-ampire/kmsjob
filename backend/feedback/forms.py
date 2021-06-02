@@ -1,5 +1,5 @@
 from django import forms
-from .models import FeedbackMessage, AddVacancyMessage
+from feedback.models import FeedbackMessage, AddVacancyMessage
 
 
 class FeedBackMessageForm(forms.ModelForm):
