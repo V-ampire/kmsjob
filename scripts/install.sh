@@ -16,21 +16,24 @@ read -p "Your domain without protocol (for example, google.com): " project_domai
 `$base_python_interpreter -m venv backend/env`
 source backend/env/bin/activate
 pip install -U pip
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 
 # Создаем БД
+echo Creating database...
 PGPASSWORD=$DB_PASSWORD psql -U $DB_USER --set=DB_NAME=$DB_NAME -f scripts/init_db.sql
 
 # Выполняем миграции
 pytnon backend/manage.py migrate
 
 # Создаем индексы для текстового поиска
+echo Creating database indexes...
 PGPASSWORD=$DB_PASSWORD psql -U $DB_USER --set=DB_NAME=$DB_NAME -f shell_scripts/create_db_index.sql
 
 # Собираем статику
 pytnon backend/manage.py collectstatic
 
 # Подставляем путь до проекта в конфиги и скрипты
+echo Configure project path and domain...
 sed -i "s~template_path~$project_path~g" nginx/site.conf systemd/gunicorn.service
 sed -i "s~template_domain~$project_domain~g" nginx/site.conf
 sed -i "s~template_path~$project_path~g" scripts/run_parsers.sh
@@ -38,6 +41,7 @@ sed -i "s~template_path~$project_path~g" scripts/run_cleaner.sh
 sed -i "s~template_path~$project_path~g" scripts/crontab.txt
 
 # Подключаем сервера
+echo Enable servers...
 sudo ln -s $project_path/nginx/site.conf /etc/nginx/sites-enabled/
 sudo ln -s $project_path/systemd/gunicorn.service /etc/systemd/system/
 
