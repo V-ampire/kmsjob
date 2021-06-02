@@ -1,0 +1,17 @@
+-i https://pypi.org/simple
+-e git+https://github.com/emorozov/pytils.git@4cc32fcf505ea58f81b579d3e5ac0132bf20021f#egg=pytils
+asgiref==3.3.4
+beautifulsoup4==4.9.3
+certifi==2021.5.30
+chardet==4.0.0
+django-environ==0.4.5
+django==3.2.3
+idna==2.10
+pillow==8.2.0
+psycopg2-binary==2.8.6
+pytelegramlogger==1.0.0
+pytz==2021.1
+requests==2.25.1
+soupsieve==2.2.1 ; python_version >= '3.0'
+sqlparse==0.4.1
+urllib3==1.26.5
