@@ -46,7 +46,7 @@ sudo systemctl enable gunicorn
 sudo service nginx restart
 
 # Настраиваем SSL соединение
-sudo certbot certonly --nginx -d $project_domain
+sudo certbot --nginx -d $project_domain
 
 # Добавляем задания в cron
 chmod -R ug+x scripts/*
