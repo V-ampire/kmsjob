@@ -35,6 +35,7 @@ sed -i "s~template_path~$project_path~g" nginx/site.conf systemd/gunicorn.servic
 sed -i "s~template_domain~$project_domain~g" nginx/site.conf
 sed -i "s~template_path~$project_path~g" scripts/run_parsers.sh
 sed -i "s~template_path~$project_path~g" scripts/run_cleaner.sh
+sed -i "s~template_path~$project_path~g" scripts/crontab.txt
 
 # Подключаем сервера
 sudo ln -s $project_path/nginx/site.conf /etc/nginx/sites-enabled/
@@ -50,11 +51,6 @@ sudo certbot --nginx -d $project_domain
 
 # Добавляем задания в cron
 chmod -R ug+x scripts/*
-# Парсить новые вакансии каждый день в 10-00
-0 10 * * * $project_path/scripts/run_parsers.sh >> scripts/crontab.txt
-# Запускать удаление старых вакансии каждый день в 10-01
-01 10 * * * $project_path/scripts/run_cleaner.sh >> scripts/crontab.txt
-
 crontab scripts/crontab.txt
 
 echo Project installed! Check $project_domain
