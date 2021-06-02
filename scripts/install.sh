@@ -45,7 +45,7 @@ sudo systemctl start gunicorn
 sudo systemctl enable gunicorn
 sudo service nginx restart
 
-# Настраиваем SSL соединение
+# Настраиваем HTTPS
 sudo certbot --nginx -d $project_domain
 
 # Добавляем задания в cron
