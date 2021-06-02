@@ -1,2 +1,2 @@
-0 10 * * * template_path/scripts/run_parsers.sh >> scripts/crontab.txt
-01 10 * * * template_path/scripts/run_cleaner.sh >> scripts/crontab.txt
+0 10 * * * template_path/scripts/run_parsers.sh
+01 10 * * * template_path/scripts/run_cleaner.sh
