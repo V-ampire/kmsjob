@@ -23,14 +23,14 @@ echo Creating database...
 PGPASSWORD=$DB_PASSWORD psql -U $DB_USER --set=DB_NAME=$DB_NAME -f scripts/init_db.sql
 
 # Выполняем миграции
-pytnon backend/manage.py migrate
+python backend/manage.py migrate
 
 # Создаем индексы для текстового поиска
 echo Creating database indexes...
 PGPASSWORD=$DB_PASSWORD psql -U $DB_USER --set=DB_NAME=$DB_NAME -f scripts/create_db_index.sql
 
 # Собираем статику
-pytnon backend/manage.py collectstatic
+python backend/manage.py collectstatic
 
 # Подставляем путь до проекта в конфиги и скрипты
 echo Configure project path and domain...
