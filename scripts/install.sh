@@ -46,8 +46,8 @@ sudo ln -s $project_path/nginx/kmsjob.conf /etc/nginx/sites-enabled/
 sudo ln -s $project_path/systemd/kmsjob.gunicorn.service /etc/systemd/system/
 
 sudo systemctl daemon-reload
-sudo systemctl start gunicorn
-sudo systemctl enable gunicorn
+sudo systemctl start kmsjob.gunicorn
+sudo systemctl enable kmsjob.gunicorn
 sudo service nginx restart
 
 # Настраиваем HTTPS
@@ -57,4 +57,4 @@ sudo certbot --nginx -d $project_domain
 chmod -R ug+x scripts/*
 crontab scripts/crontab.txt
 
-echo Project installed! Check $project_domain
+echo Project installed! Check https://$project_domain

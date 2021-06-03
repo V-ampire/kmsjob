@@ -1,10 +1,9 @@
 [Unit]
-Description=gunicorn daemon
-Requires=gunicorn.socket
+Description=gunicorn for kmsjob.ru
 After=network.target
 
 [Service]
-User=www
+User=django
 Group=www-data
 WorkingDirectory=template_path/backend
 ExecStart=template_path/backend/env/bin/gunicorn --workers 3 --bind unix:template_path/gunicorn/gunicorn.sock config.wsgi:application --access-logfile template_path/gunicorn/access.log --error-logfile template_path/gunicorn/error.log

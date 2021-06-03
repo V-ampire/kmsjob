@@ -19,6 +19,7 @@ requests = "*"
 beautifulsoup4 = "*"
 django-environ = "*"
 pytelegramlogger = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
