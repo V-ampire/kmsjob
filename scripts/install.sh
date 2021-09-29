@@ -40,8 +40,8 @@ sed -i "s~template_path~$project_path~g" scripts/crontab
 
 # Подключаем сервера
 echo Enable servers...
-sudo ln -s $project_path/nginx/kmsjob.conf /etc/nginx/sites-enabled/
-sudo ln -s $project_path/systemd/kmsjob.gunicorn.service /etc/systemd/system/
+sudo ln -fns $project_path/nginx/kmsjob.conf /etc/nginx/sites-enabled/
+sudo ln -fns $project_path/systemd/kmsjob.gunicorn.service /etc/systemd/system/
 
 sudo systemctl daemon-reload
 sudo systemctl start kmsjob.gunicorn
