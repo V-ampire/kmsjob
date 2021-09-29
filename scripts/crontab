@@ -1,0 +1,2 @@
+0 10 * * * template_path/backend/env/bin/python template_path/backend/manage.py run_parsers
+1 10 * * * template_path/backend/env/bin/python template_path/backend/manage.py run_cleaner

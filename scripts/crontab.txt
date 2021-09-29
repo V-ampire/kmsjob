@@ -1,2 +1,0 @@
-0 10 * * * template_path/scripts/run_parsers.sh
-01 10 * * * template_path/scripts/run_cleaner.sh

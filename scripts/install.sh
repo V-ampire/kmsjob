@@ -36,9 +36,7 @@ python backend/manage.py collectstatic
 echo Configure project path and domain...
 sed -i "s~template_path~$project_path~g" nginx/kmsjob.conf systemd/kmsjob.gunicorn.service
 sed -i "s~template_domain~$project_domain~g" nginx/kmsjob.conf
-sed -i "s~template_path~$project_path~g" scripts/run_parsers.sh
-sed -i "s~template_path~$project_path~g" scripts/run_cleaner.sh
-sed -i "s~template_path~$project_path~g" scripts/crontab.txt
+sed -i "s~template_path~$project_path~g" scripts/crontab
 
 # Подключаем сервера
 echo Enable servers...
@@ -54,7 +52,6 @@ sudo service nginx restart
 sudo certbot --nginx -d $project_domain
 
 # Добавляем задания в cron
-chmod -R ug+x scripts/*
-crontab scripts/crontab.txt
+crontab scripts/crontab
 
 echo Project installed! Check https://$project_domain
