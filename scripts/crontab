@@ -1,2 +1,2 @@
-0 10 * * * template_path/backend/env/bin/python template_path/backend/manage.py run_parsers
-1 10 * * * template_path/backend/env/bin/python template_path/backend/manage.py run_cleaner
+0 0 * * * template_path/backend/env/bin/python template_path/backend/manage.py run_parsers --settings=config.settings.prod
+1 0 * * * template_path/backend/env/bin/python template_path/backend/manage.py run_cleaner --settings=config.settings.prod
